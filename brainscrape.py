@@ -18,16 +18,18 @@ def getQuotes(keyword=example_key, numpages=7):
     # Initialize lists
     quoteArray = []
     authorArray = []
-    pageNameArray = [keyword]
+    pageNameArray = [keyword+"-quotes"]
     for i in range(2, numpages + 1):
-        pageNameArray.append(keyword + "_" + str(i))
+        pageNameArray.append(keyword + "-quotes" + "_" + str(i))
 
     # For every page pertaining to a topic
     for page in pageNameArray:
         time.sleep(5)
         # Obtain BrainyQuote page html
         base_url = "http://www.brainyquote.com/quotes/keywords/"
-        url = base_url + keyword + ".html"
+        url = base_url + page
+        # print('url : ', url)
+        # continue
         response_data = requests.get(url).text[:]
         soup = BeautifulSoup(response_data, 'html.parser')
 
@@ -52,16 +54,18 @@ def getQuotesByAuthor(author=example_author, numpages=4):
     # Initialize lists
     quoteArray = []
     authorArray = []
-    pageNameArray = [author]
+    pageNameArray = [author+"-quotes"]
     for i in range(2, numpages + 1):
-        pageNameArray.append(author + "_" + str(i))
+        pageNameArray.append(author+ "-quotes" + "_" + str(i))
 
     # For every page pertaining to a topic
     for page in pageNameArray:
         time.sleep(5)
         # Obtain BrainyQuote page html
         base_url = "http://www.brainyquote.com/quotes/authors/"
-        url = base_url + author[0] + "/" + author + "-quotes.html"
+        url = base_url + page
+        # print('url : ', url)
+        # continue
         response_data = requests.get(url).text[:]
         soup = BeautifulSoup(response_data, 'html.parser')
 
@@ -78,4 +82,7 @@ def getQuotesByAuthor(author=example_author, numpages=4):
     return ans #, len(ans)
 
 
-
+insp_quotes = getQuotesByAuthor('confucius', 2)
+for q, author in insp_quotes:
+    print(q)
+    print(author)
