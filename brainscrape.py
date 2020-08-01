@@ -81,8 +81,3 @@ def getQuotesByAuthor(author=example_author, numpages=4):
     ans = zip(quoteArray, authorArray)
     return ans #, len(ans)
 
-
-insp_quotes = getQuotesByAuthor('confucius', 2)
-for q, author in insp_quotes:
-    print(q)
-    print(author)
