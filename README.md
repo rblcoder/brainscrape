@@ -7,7 +7,15 @@ Ever wanted to search quotes by keyword and amass them in a organized, streamlin
 Then brainscrape is great for you! Simply run:
 
 ```python
-getQuotes(your_keyword_here, num_pages_to_search_here)
+insp_quotes = getQuotes('inspiration', 2)
+for q, author in insp_quotes:
+    print(q)
+    print(author)
+
+confucius_quotes = getQuotesByAuthor('confucius', 2)
+for q, author in confucius_quotes:
+    print(q)
+    print(author)
 ```
 
 ... and a lovely list of (quote, author) tuples will be bestowed upon you for further use.
