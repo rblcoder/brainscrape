@@ -4,6 +4,7 @@
 
 import requests
 from bs4 import BeautifulSoup
+import time
 
 example_key = "lemons"
 example_author = "kurt_vonnegut"
@@ -23,6 +24,7 @@ def getQuotes(keyword=example_key, numpages=7):
 
     # For every page pertaining to a topic
     for page in pageNameArray:
+        time.sleep(5)
         # Obtain BrainyQuote page html
         base_url = "http://www.brainyquote.com/quotes/keywords/"
         url = base_url + keyword + ".html"
@@ -56,6 +58,7 @@ def getQuotesByAuthor(author=example_author, numpages=4):
 
     # For every page pertaining to a topic
     for page in pageNameArray:
+        time.sleep(5)
         # Obtain BrainyQuote page html
         base_url = "http://www.brainyquote.com/quotes/authors/"
         url = base_url + author[0] + "/" + author + "-quotes.html"
